@@ -13,6 +13,8 @@ public class SimpleEventBusTest {
         EventBus bus = new SimpleEventBus();
         bus.register(this);
         bus.publish(new SimpleEvent("event1"));
+        bus.publish(new SimpleEvent1("event1"));
+        bus.publish(new SimpleEvent2("event1"));
     }
 
     @Test

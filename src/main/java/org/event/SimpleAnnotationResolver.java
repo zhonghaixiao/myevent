@@ -26,13 +26,12 @@ public class SimpleAnnotationResolver implements Resolver {
             if (parameters.length != 1){
                 System.out.println("method " + method.getName() + " has more than one arguments !!");
             }else {
-                Subscription annotation = method.getAnnotation(Subscription.class);
-                if (annotation != null) {
-                    SimpleAnotationListener listener = new SimpleAnotationListener(instance, method, paramTypes[0]);
-                    listeners.add(listener);
-                }
-                if (paramTypes[0].isAssignableFrom(Event.class)){
-
+                if (Event.class.isAssignableFrom(paramTypes[0])){
+                    Subscription annotation = method.getAnnotation(Subscription.class);
+                    if (annotation != null) {
+                        SimpleAnotationListener listener = new SimpleAnotationListener(instance, method, paramTypes[0]);
+                        listeners.add(listener);
+                    }
                 }else{
                     System.out.println("method parameter type is not a Event!!!!");
                 }
